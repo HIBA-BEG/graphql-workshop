@@ -7,10 +7,6 @@ A simple movie management application built with **NestJS** for the backend and 
 - [Features](#features)
 - [Technologies](#technologies)
 - [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -60,7 +56,6 @@ cd movies-client
 2. Install dependencies:
 
 ````
-
 npm install
 ````
 
