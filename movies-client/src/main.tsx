@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ApolloProvider } from '@apollo/client'
-import { client } from './AppoloClient.ts'
+import { client } from './ApolloClient.ts'
 import './index.css'
 import App from './App.tsx'
 

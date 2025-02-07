@@ -6,7 +6,7 @@ import './MovieList.css';
 export function MovieList() {
   const { loading, error, data } = useQuery(GET_MOVIES);
   const [deleteMovie] = useMutation(DELETE_MOVIE, {
-    refetchQueries: [{ query: GET_MOVIES }], // Refetch the movie list after deletion
+    refetchQueries: [{ query: GET_MOVIES }], 
   });
 
   if (loading) return <div>Loading...</div>;
