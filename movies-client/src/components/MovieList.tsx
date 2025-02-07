@@ -1,31 +1,44 @@
-import { useQuery } from '@apollo/client';
-import { GET_MOVIES } from '../graphql/operations';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_MOVIES, DELETE_MOVIE } from '../graphql/operations';
 import { Movie } from '../types/movie';
+import './MovieList.css';
 
 export function MovieList() {
   const { loading, error, data } = useQuery(GET_MOVIES);
+  const [deleteMovie] = useMutation(DELETE_MOVIE, {
+    refetchQueries: [{ query: GET_MOVIES }], // Refetch the movie list after deletion
+  });
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  const handleDelete = async (id: string) => {
+    if (window.confirm("Are you sure you want to delete this movie?")) {
+      await deleteMovie({ variables: { id } });
+    }
+  };
+
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="movie-list">
       {data.movies.map((movie: Movie) => (
-        <div key={movie._id} className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-lg font-semibold">{movie.title}</h3>
-          <p className="text-gray-600">{movie.director}</p>
-          <p className="text-sm text-gray-500">{movie.year}</p>
-          <div className="mt-2">
-            {movie.genres.map((genre) => (
-              <span key={genre} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                {genre}
-              </span>
-            ))}
+        <div className="movie-card" key={movie._id}>
+          <h3 className="movie-title">{movie.title}</h3>
+          <p className="movie-year">Released on: {movie.year}</p>
+          <div className="movie-genres">
+            Genres: {movie.genres.join(', ')}
           </div>
-          <div className="mt-2 flex justify-between items-center">
-            <span className="text-sm text-gray-500">{movie.duration} min</span>
-            <span className="text-sm font-semibold text-yellow-600">★ {movie.rating}</span>
+          <div className="movie-duration">
+            Duration: {movie.duration} min
           </div>
+          <div className="movie-rating">
+            Rating: {movie.rating}★
+          </div>
+          <button
+            onClick={() => handleDelete(movie._id)}
+            className="delete-button"
+          >
+            Delete
+          </button>
         </div>
       ))}
     </div>

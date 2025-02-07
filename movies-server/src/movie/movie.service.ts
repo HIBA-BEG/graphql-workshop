@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Movie, MovieDocument } from './entities/movie.entity';
-import { CreateMovieInput } from './dto/create-movie.input';
-import { UpdateMovieInput } from './dto/update-movie.input';
+import { CreateMovieInput } from './inputs/create-movie.input';
+import { UpdateMovieInput } from './inputs/update-movie.input';
 
 @Injectable()
 export class MoviesService {

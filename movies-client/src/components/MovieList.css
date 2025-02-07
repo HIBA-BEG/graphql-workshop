@@ -1,0 +1,57 @@
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    color: black;
+  }
+  
+  .movie-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: 200px;
+    transition: transform 0.2s;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .movie-title {
+    font-size: 1.2em;
+    margin: 0;
+  }
+  
+  .movie-year {
+    color: #6c757d;
+  }
+  
+  .movie-genres {
+    color: #6c757d;
+  }
+  
+  .movie-duration { 
+    color: #6c757d;
+  }
+  
+  .movie-rating { 
+    color: #6c757d;
+  }
+
+  .delete-button {
+    background-color: #a5004d; 
+    padding: 8px 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    /* transition: background-color 0.3s; */
+  }
+  
+  .delete-button:hover {
+    background-color: #520026;
+  }
